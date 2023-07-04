@@ -1,5 +1,5 @@
+import os
 from flask import Flask
-from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
 from server.authentication import authentication
 from server.ticketing import ticketing
@@ -7,6 +7,8 @@ from server.models import db
 def create_app(config=None):
     app = Flask(__name__,instance_relative_config=True)
     app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://rishabhdev:secretpassword@localhost/ticketer'
+    # app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
+    app.config['SECRET_KEY'] = 'ajfbapdoiajpuehra32rwo98afuhhj'
     if config is None:
         app.config.from_pyfile('config.py', silent=True)
     db.init_app(app)
