@@ -15,7 +15,7 @@ class User(db.Model):
     email = db.Column(db.String(40),unique=True,nullable=False)
     first = db.Column(db.String(30),nullable=False)
     last = db.Column(db.String(40),nullable=False)
-    password = db.Column(db.String(64),nullable=False)
+    password = db.Column(db.String(128),nullable=False)
     tickets = db.relationship('Ticket',backref='user',lazy=True)
     
     def __repr__(self):
